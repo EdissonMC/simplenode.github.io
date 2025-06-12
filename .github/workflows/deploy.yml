@@ -24,7 +24,7 @@ jobs:
       
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       - name: setup
         uses: actions/setup-node@v4
         with:
@@ -32,3 +32,6 @@ jobs:
 
       - name: Instalar dependencias
         run: npm install
+
+      - name: Run test
+        run: npm run test
