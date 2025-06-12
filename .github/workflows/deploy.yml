@@ -6,23 +6,29 @@ jobs:
   first_job:
     runs-on: ubuntu-latest
 
-    services:
-      redis:
-        image: redis
-        ports:
-          - 6379:6379
+    # services:
+    #   redis:
+    #     image: redis
+    #     ports:
+    #       - 6379:6379
 
     steps:
-      - name : Install redi cli
-        run: sudo apt-get update -y && sudo apt-get install redis-tools -y
+      # - name : Install redi cli
+      #   run: sudo apt-get update -y && sudo apt-get install redis-tools -y
 
-      - name: Test redis
-        run: redis-cli -h localhost -p 6379 ping
+      # - name: Test redis
+      #   run: redis-cli -h localhost -p 6379 ping
       
       - name: Print variable
         run: echo "${{ secrets.SECRET1 }}"
       
+      - name: Checkout
+        uses: actions/checkout@v4
+        
       - name: setup
         uses: actions/setup-node@v4
         with:
           node-version: 18
+
+      - name: Instalar dependencias
+        run: npm install
