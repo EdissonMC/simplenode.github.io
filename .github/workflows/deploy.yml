@@ -9,3 +9,9 @@ jobs:
     steps:
       - name: Print variable
         run: echo "${{ secrets.SECRET1 }}"
+
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: List files in the repository
+        run: ls -la
