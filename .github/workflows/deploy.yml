@@ -4,13 +4,17 @@ on: push
 
 jobs:
   build_job:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latests
 
     steps:
-      - name: Print variable
+      - name: Print secret
         run: echo "${{ secrets.SECRET1 }}"
-
-    # services:
+      
+      - name: Print variable 
+        run: |
+          echo "This is a variable: ${{ vars.LINK_DB }}"
+    
+      # services:
     #   redis:
     #     image: redis
     #     ports:
