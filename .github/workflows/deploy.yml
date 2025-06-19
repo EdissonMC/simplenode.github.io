@@ -3,8 +3,12 @@ name: Deploy
 on: push
 
 jobs:
-  build:
+  build_job:
     runs-on: ubuntu-latest
+
+    steps:
+      - name: Print variable
+        run: echo "${{ secrets.SECRET1 }}"
 
     # services:
     #   redis:
@@ -12,40 +16,40 @@ jobs:
     #     ports:
     #       - 6379:6379
 
-    steps:
+    # steps:
       # - name : Install redi cli
       #   run: sudo apt-get update -y && sudo apt-get install redis-tools -y
 
       # - name: Test redis
       #   run: redis-cli -h localhost -p 6379 ping
       
-      - name: Print variable
-        run: echo "${{ secrets.SECRET1 }}"
+      # - name: Print variable
+      #   run: echo "${{ secrets.SECRET1 }}"
       
-      - name: Checkout
-        uses: actions/checkout@v4
+      # - name: Checkout
+      #   uses: actions/checkout@v4
 
-      - name: setup
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
+      # - name: setup
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 18
 
-      - name: Instalar dependencias
-        run: npm install
+      # - name: Instalar dependencias
+      #   run: npm install
 
-      - name: Run test
-        run: npm run test
+      # - name: Run test
+      #   run: npm run test
 
 
-  deploy:
+  # deploy:
 
     # steps:
     #   - name: Notify Slack
     #   run: echo "sigo ejecutandome para notificar a slack"
 
-    runs-on: ubuntu-latest
-    needs: build
+    # runs-on: ubuntu-latest
+    # needs: build
 
-    steps:
-      - name : Deploy to GitHub Pages
-        run : echo "Deploying to GitHub Pages"
+    # steps:
+    #   - name : Deploy to GitHub Pages
+    #     run : echo "Deploying to GitHub Pages"
