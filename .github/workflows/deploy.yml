@@ -6,6 +6,13 @@ jobs:
   build_job:
     runs-on: ubuntu-latest
 
+    services:
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+
+
     steps:
       - name: Print secret
         run: echo "${{ secrets.SECRET1 }}"
@@ -13,7 +20,14 @@ jobs:
       - name: Print variable 
         run: |
           echo "This is a variable: ${{ vars.LINK_DB }}"
-          
+
+      - name: Redis CLI
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install redis-tools -y
+      - name: Test Redis
+        run: redis-cli -h localhost -p 6379 ping
+        
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
