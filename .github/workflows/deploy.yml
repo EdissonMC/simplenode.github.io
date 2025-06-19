@@ -38,7 +38,7 @@ jobs:
 
 
   deploy:
-    if: ${{ always() }}
+
     # steps:
     #   - name: Notify Slack
     #   run: echo "sigo ejecutandome para notificar a slack"
